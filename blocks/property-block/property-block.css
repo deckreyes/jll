@@ -1,0 +1,27 @@
+.property-block {
+  background-color: var(--background-color);
+  width: 750px;
+  padding: 10px;
+}
+
+.property-block div:nth-child(2) {
+  background-color: #f7f5f0; 
+  text-align: center;
+  height: 440px;
+}
+
+.property-block div:nth-child(2) img {
+  width: 75%;
+  height: 440px;
+}
+
+.property-block div:nth-child(3) {
+  background-color: var(--background-color);
+  text-align: center;
+}
+
+.property-block div:nth-child(4) {
+  background-color: var(--background-color);
+  font-size: 16px;
+  font-weight: 400;
+}

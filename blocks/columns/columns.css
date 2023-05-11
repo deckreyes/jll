@@ -3,6 +3,14 @@
   flex-direction: column;
 }
 
+.columns :first-child {
+  width: 500px;
+}
+
+.columns > * {
+  flex: 0 0 auto;
+}
+
 .columns img {
   width: 100%;
 }

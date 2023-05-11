@@ -4,6 +4,8 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 3px #EEF0F3;
+  border-bottom-style: inset;
 }
 
 header nav {
@@ -45,7 +47,9 @@ header nav[aria-expanded="true"] {
   header nav[aria-expanded="true"] {
     min-height: 0;
     overflow: visible;
-  }
+    padding-top: 45px;
+    padding-bottom: 40px;
+   }
 }
 
 header nav p {
@@ -141,14 +145,14 @@ header nav[aria-expanded="true"] .nav-hamburger-icon::after {
 /* brand */
 header .nav-brand {
   grid-area: brand;
-  flex-basis: 128px;
+  flex-basis: 2px;
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
 }
 
 header nav .nav-brand img {
-  width: 128px;
+  width: 100px;
   height: auto;
 }
 
@@ -176,6 +180,8 @@ header nav .nav-sections ul  {
 
 header nav .nav-sections ul > li {
   font-weight: 700;
+  border-left: 1px solid #dbd6c7;
+  padding-left: 20px;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -191,6 +197,7 @@ header nav .nav-sections ul > li > ul > li {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    color: #626468;
   }
 
   header nav[aria-expanded="true"] .nav-sections {
@@ -272,4 +279,30 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+  display: flex; 
+  height: 100px;
+  align-items: center;
+  gap: 40px;
+
+}
+
+header nav .country-nav {
+  width: 50%; 
+  color: grey;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+header nav .country-nav img {
+  width: 30px;
+  height: 18px;
+}
+
+header nav .contact-us-nav {
+  flex-grow: 1;  
+}
+
+header nav .contact-us-nav img {
+  border-radius: 10px;
+  margin-right: 10px;
 }
