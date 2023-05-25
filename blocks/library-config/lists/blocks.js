@@ -1,5 +1,10 @@
 import { createTag } from '../../../scripts/scripts.js';
+
 /** import createCopy from '../library-utils.js'; **/
+function createCopy(blob) {
+  const data = [new ClipboardItem({ [blob.type]: blob })];
+  navigator.clipboard.write(data);
+}
 
 function getAuthorName(block) {
   const blockSib = block.previousElementSibling;
