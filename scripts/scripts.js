@@ -44,6 +44,14 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Determine if we are serving content for the block-library, if so don't load the header or footer
+ * @returns {boolean} True if we are loading block library content
+ */
+export function isBlockLibrary() {
+  return window.location.pathname.includes('block-library');
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -101,8 +109,10 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+  if (!isBlockLibrary()) {
+    loadHeader(doc.querySelector('header'));
+    loadFooter(doc.querySelector('footer'));
+  }
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
