@@ -1,5 +1,5 @@
 import { createTag } from '../../../scripts/scripts.js';
-import createCopy from '../library-utils.js';
+/** import createCopy from '../library-utils.js'; **/
 
 function getAuthorName(block) {
   const blockSib = block.previousElementSibling;
