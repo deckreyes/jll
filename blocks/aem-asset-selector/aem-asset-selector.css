@@ -4,10 +4,7 @@
     margin: -20px;
 }
 
-footer {
-    display: none;
-}
-
+footer,
 header {
     display: none;
 }
