@@ -18,6 +18,7 @@
         ],
         "url": "/aem-asset-selector",
         "isPalette": true,
+        "includePaths": [ "**.docx**" ],
         "paletteRect": "width:1000px; height:700px"
       }
     ]

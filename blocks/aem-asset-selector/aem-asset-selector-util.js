@@ -1,11 +1,8 @@
-const IMS_API_KEY = 'franklin';
-const AS_MFE_STAGE = 'https://experience-stage.adobe.com/solutions/CQ-assets-selectors/assets/resources/asset-selectors.js';
-const AS_MFE_PROD = 'https://experience.adobe.com/solutions/CQ-assets-selectors/assets/resources/asset-selectors.js';
+const AS_MFE = 'https://experience.adobe.com/solutions/CQ-assets-selectors/assets/resources/asset-selectors.js';
 const IMS_ENV_STAGE = 'stg1';
 const IMS_ENV_PROD = 'prod';
 
 let imsInstance = null;
-let asMFE;
 let imsEnvironment;
 
 function loadScript(url, callback, type) {
@@ -20,9 +17,9 @@ function loadScript(url, callback, type) {
   return $script;
 }
 
-function load() {
+function load(cfg) {
   const imsProps = {
-    imsClientId: IMS_API_KEY,
+    imsClientId: cfg['ims-client-id'],
     imsScope: 'additional_info.projectedProductContext,openid,read_organizations,AdobeID,ab.manage',
     redirectUrl: window.location.href,
     modalMode: true,
@@ -37,16 +34,14 @@ function load() {
 export function init(cfg, callback) {
   if (cfg.environment.toUpperCase() === 'STAGE') {
     imsEnvironment = IMS_ENV_STAGE;
-    asMFE = AS_MFE_STAGE;
   } else if (cfg.environment.toUpperCase() === 'PROD') {
     imsEnvironment = IMS_ENV_PROD;
-    asMFE = AS_MFE_PROD;
   } else {
     throw new Error('Invalid environment setting!');
   }
 
-  loadScript(asMFE, () => {
-    load();
+  loadScript(AS_MFE, () => {
+    load(cfg);
     if (callback) {
       callback();
     }
@@ -74,12 +69,13 @@ async function setToClipboard(rennditionURL, mimetype) {
           <td>embed</td>
         </tr>
         <tr>
-          <td>${rennditionURL}</td>
+          <td><a href=${rennditionURL}>${rennditionURL}</a></td>
         </tr>
       </table>
       `;
 
       data = [
+        // eslint-disable-next-line no-undef
         new ClipboardItem({ 'text/html': new Blob([block], { type: 'text/html' }) }),
       ];
     } else {
@@ -98,7 +94,7 @@ function handleSelection(selection) {
     // eslint-disable-next-line no-alert
     alert('Please select an approved asset only!!');
   } else {
-    const mimetype = selectedAsset.mimetype;
+    const { mimetype } = selectedAsset;
     let deliveryUrl;
     if (mimetype && mimetype.startsWith('image')) {
       deliveryUrl = `https://${selection[0]['repo:repositoryId'].replace('author', 'delivery')}`
@@ -124,11 +120,13 @@ function handleNavigateToAsset(asset) {
 
 export async function renderAssetSelectorWithImsFlow(cfg) {
   const assetSelectorProps = {
+    repositoryId: cfg['repository-id'],
     imsOrg: cfg['ims-org-id'],
     onClose,
     handleSelection,
     handleNavigateToAsset,
     env: cfg.environment.toUpperCase(),
+    apiKey: 'franklin',
   };
   const container = document.getElementById('asset-selector');
   // eslint-disable-next-line no-undef
