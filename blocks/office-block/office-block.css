@@ -17,13 +17,12 @@
   width: 150px;
 }
 
-
+/* Title of the property */
 .office-block div:nth-child(2) {
   background-color: var(--background-color);
   font-size: 30px;
   font-weight: 500;
-  /* change color to red */
-  color: red;
+  color: green;
   text-align: left;
   width: 100%;
   border: 0px inset white;

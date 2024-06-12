@@ -12,4 +12,4 @@ var lat = longandlat[1]
 //alert (long + "" + lat)
 //document.getElementById('google-map-location').innerHTML = long + " " + lat;
 
-document.getElementById('google-map-location').innerHTML = "<object type=\"text/html\" data=\"https://maps.google.com/maps?q=" + long + "," + lat + "\"" + "style=\"width:1400px; height:400px\"><p>backup content</p></object>";
+document.getElementById('google-map-location').innerHTML = "<object type=\"text/html\" data=\"https://google.com/maps?q=" + long + "," + lat + "\"" + "style=\"width:1400px; height:400px\"></object>";
